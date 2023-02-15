@@ -14,10 +14,6 @@ R = function(name)
   return require(name)
 end
 
--- save in insert mode
-vim.keymap.set("i", "<C-s>", "<cmd>:w<cr><esc>")
-vim.keymap.set("n", "<C-s>", "<cmd>:w<cr><esc>")
-
 -- Resize window using <shift> arrow keys
 vim.keymap.set("n", "<S-Up>", "<cmd>resize +2<CR>")
 vim.keymap.set("n", "<S-Down>", "<cmd>resize -2<CR>")
@@ -247,10 +243,18 @@ wk.register(
       name = 'treesitter',
       h = { ":TSNodeUnderCursor<cr>", "hover" },
     },
+    u = { vim.cmd.UndotreeToggle, "open Untotree"},
     w = {
       name = 'write',
       w = { ":w<cr>", "write" },
     },
+    x = {
+      name = 'custom',
+      -- vim.keymap.set("n", "<leader>xb", "<cmd>!python3 /home/r/wo/bibq.py %:p<cr>", {desc = "bibq this file on linux"})
+      -- vim.keymap.set("n", "<leader>xw", "<cmd>!py C:\\Users\\R\\wo\\bibq.py %:p<cr>", {desc = "bibq this file on windows"})
+      b = { "<cmd>!python3 /home/r/wo/bibq.py %:p<cr>", "bibq this file on linux"},
+      w = { "<cmd>!py C:\\Users\\R\\wo\\bibq.py %:p<cr>", "bibq this file on windows"},
+    }
   }, { mode = 'n', prefix = '<leader>' }
 )
 
@@ -294,3 +298,62 @@ wk.register({
   ['<cm-i>'] = { '<esc>o```{python}<cr>```<esc>O', "r code chunk" },
   ['<m-I>'] = { '<esc>o```{python}<cr>```<esc>O', "r code chunk" },
 }, { mode = 'i' })
+
+
+
+vim.opt.spell = true
+
+vim.opt.nu = true
+vim.opt.relativenumber = true
+
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = false
+
+vim.opt.smartindent = true
+
+vim.opt.wrap = true
+-- Toggle wrapping
+vim.keymap.set("n", "<leader>tw", function()
+    if vim.inspect(vim.opt.wrap["_value"]) == "true" then -- if wrap value is true
+      vim.o.wrap = false
+    else
+      vim.o.wrap = true
+    end
+  end, {desc = 'Turn on soft wrapping'})
+
+vim.opt.swapfile = false
+vim.opt.backup = false
+-- vim.opt.undodir = os.getenv("HOME" .. "/.vim/undodir")
+vim.opt.undofile = true
+
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+
+vim.opt.termguicolors = true
+
+vim.opt.scrolloff = 8
+vim.opt.signcolumn = "yes"
+-- vim.opt.isfname:append("@-@")
+--
+vim.opt.updatetime = 50
+
+vim.opt.colorcolumn = "80"
+
+vim.g.mapleader = " "
+
+-- Move selected text up or down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv")
+
+-- Append the next line to the current one - leaves a vim mark on the "z" key
+vim.keymap.set("n", "J", "mzJ`z")
+
+-- Scroll up and down while leaving the cursor vertically centered for easier tracking
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+-- When iterating through search terms, keep the cursor vertically centered for easier tracking
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
