@@ -257,6 +257,7 @@ wk.register(
       -- vim.keymap.set("n", "<leader>xw", "<cmd>!py C:\\Users\\R\\wo\\bibq.py %:p<cr>", {desc = "bibq this file on windows"})
       b = { "<cmd>!python3 /home/r/wo/bibq.py %:p<cr>", "bibq this file on linux"},
       w = { "<cmd>!py C:\\Users\\R\\wo\\bibq.py %:p<cr>", "bibq this file on windows"},
+	  q = { "!start quarto preview %:p", "Quarto preview this file"},
     }
   }, { mode = 'n', prefix = '<leader>' }
 )
