@@ -14,7 +14,7 @@ return {
         treesitter = true
       }
     }
-    vim.cmd.colorscheme 'catppuccin'
+    vim.cmd.colorscheme 'torte'
     local colors = require('catppuccin.palettes.mocha')
     vim.cmd.highlight { 'Tabline', 'guifg=' .. colors.green, 'guibg=' .. colors.mantle }
   end
