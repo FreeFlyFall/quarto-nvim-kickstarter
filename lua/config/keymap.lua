@@ -255,8 +255,8 @@ wk.register(
       name = 'custom',
       -- vim.keymap.set("n", "<leader>xb", "<cmd>!python3 /home/r/wo/bibq.py %:p<cr>", {desc = "bibq this file on linux"})
       -- vim.keymap.set("n", "<leader>xw", "<cmd>!py C:\\Users\\R\\wo\\bibq.py %:p<cr>", {desc = "bibq this file on windows"})
-      b = { "<cmd>!python3 /home/r/wo/bibq.py %:p<cr>", "bibq this file on linux"},
-      w = { "<cmd>!py C:\\Users\\R\\wo\\bibq.py %:p<cr>", "bibq this file on windows"},
+      b = { "<cmd>!python3 /home/r/WorldViewOutreach/bibq.py %:p<cr>", "bibq this file on linux"},
+      w = { "<cmd>!py C:\\Users\\R\\WorldviewOutreach\\bibq.py %:p<cr>", "bibq this file on windows"},
 	  q = { "<cmd>!start quarto preview %:p<cr>", "Quarto preview this file"},
     }
   }, { mode = 'n', prefix = '<leader>' }
